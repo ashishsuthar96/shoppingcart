@@ -5,9 +5,11 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    List<Product>  list= new ArrayList<Product>();
-    private double total;
+    private List<Product>  list= new ArrayList<Product>();
+
+    double total;
     private Offer offer;
+    private Discount discount;
 
     public int getProductCount(){
     return list.size();
@@ -20,15 +22,24 @@ public class ShoppingCart {
         list.add(product);
     }
 
-    public Double getTotalCartValue() {
+    public double getTotalCartValue() {
         if(list.size()>0){
-           for(Product productList: list)
-           total= total+ productList.getPrice();
+            for(Product product1: list){
+                total= total+ product1.getPrice();}
         }
-        return total;
+        if(discount!=null)
+        {total = discount.applyDiscount(total);
+            return total;
+        }
+         else
+             return total;
     }
 
     public void setOffer(Offer offer) {
        this.offer= offer;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount=discount;
     }
 }

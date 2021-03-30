@@ -48,7 +48,7 @@ public class CartTest {
 
     }
     @Test
-    public void morebuyXGetYItemFreeOffer(){
+    public void moreBuyXGetYItemFreeOffer(){
         Offer offer = new BuyXgetYItems(2,1);
         Product gatsByCream = new Product("Gatsby hair cream", 3, 90.0);
         Product bvlgiriSoap = new Product("Bvlgiri Soap", 2, 200.0);
@@ -59,5 +59,17 @@ public class CartTest {
         Assertions.assertEquals(2, cart.getProductCount());
         Assertions.assertEquals(260.0, cart.getTotalCartValue(),0.0); }
 
+    @Test
+    public void getDiscountOverCartValue500Inr(){
+        Discount discount = new AvailDiscount(40.0);
+        cart.setDiscount(discount);
+        Product gatsByCream = new Product("Gatsby hair cream", 2, 50.0);
+        Product soap = new Product("lux",2,100.0);
+        Product perfume = new Product("fog",4,40.0);
+        cart.addProduct(gatsByCream);
+        cart.addProduct(soap);
+        cart.addProduct(perfume);
+        Assertions.assertEquals(3, cart.getProductCount());
+        Assertions.assertEquals(230.0, cart.getTotalCartValue(),0.0); }
 
 }

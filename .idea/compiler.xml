@@ -9,8 +9,8 @@
         <module name="cart" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cart" target="6" />
+    <bytecodeTargetLevel target="8">
+      <module name="cart" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
